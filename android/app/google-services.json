@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "5706827922",
+    "project_id": "school-management-system-696ec",
+    "storage_bucket": "school-management-system-696ec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5706827922:android:72ec13a059539c52973e4b",
+        "android_client_info": {
+          "package_name": "com.studentteacherapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDaJOPGGnqC2PBFKYNkNncL2azb0QrMpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
