@@ -2,25 +2,27 @@ buildscript {
     ext {
         buildToolsVersion = "35.0.0"
         minSdkVersion = 24
-        compileSdkVersion = 35
-        targetSdkVersion = 35
-        ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.0.21"
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        ndkVersion = "25.2.9519653"
     }
+
     repositories {
         google()
         mavenCentral()
     }
+
     dependencies {
-        classpath("com.android.tools.build:gradle")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.android.tools.build:gradle:8.0.2")
+        classpath("com.facebook.react:react-native-gradle-plugin:0.73.3")
+
         classpath("com.google.gms:google-services:4.3.15")
     }
 }
 
-// ✅ plugins block must come AFTER buildscript
-plugins {
-    id("com.facebook.react.rootproject")
-    id("com.google.gms.google-services") version "4.4.2" apply false
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
 }

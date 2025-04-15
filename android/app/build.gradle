@@ -1,19 +1,17 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.facebook.react")
-    id("com.google.gms.google-services") // ✅ Firebase plugin
-}
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+apply plugin: "com.google.gms.google-services" // ✅ Firebase plugin at bottom
 
 def enableProguardInReleaseBuilds = false
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdk rootProject.ext.compileSdkVersion
-
     namespace "com.studentteacherapp"
+
+    ndkVersion rootProject.ext.ndkVersion
+    compileSdk rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.studentteacherapp"
@@ -49,23 +47,27 @@ android {
 }
 
 react {
+    enableHermes: false // or true if using Hermes
     autolinkLibrariesWithApp()
 }
 
 dependencies {
-    // Firebase BoM
+    // 🔥 Firebase BoM for consistent versions
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
 
-    // Firebase services
+    // Firebase modules
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database")
 
-    // React Native
+    // React Native core
     implementation("com.facebook.react:react-android")
 
+    // JavaScript engine
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
-        implementation jscFlavor
+        implementation(jscFlavor)
     }
 }
+
+apply plugin: 'com.google.gms.google-services'
